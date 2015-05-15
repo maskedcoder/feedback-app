@@ -1,0 +1,15 @@
+{
+  "name": "feedback-app",
+  "version": "1.0.0",
+  "description": "A simple Angular app",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "private": true,
+  "author": "Andrew Myers",
+  "license": "MIT"
+}
