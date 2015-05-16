@@ -4,12 +4,17 @@
   "description": "A simple Angular app",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node index.js"
   },
   "keywords": [
     "angular"
   ],
   "private": true,
   "author": "Andrew Myers",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.12.4",
+    "express": "^4.12.3"
+  }
 }
