@@ -50,10 +50,9 @@
     </div>
   </div>
 
-  <div class="container" ng-controller="ProductListController as list">
-    <!-- Example row of columns -->
+  <div class="container" ng-controller="ProductController">
     <div class="row">
-      <div class="col-md-4" ng-repeat="product in list.products | limitTo:3">
+      <div class="col-md-4" ng-repeat="product in products | limitTo:3">
         <h2>{{ product.name }}</h2>
         <p>{{ product.description }}</p>
         <p><a class="btn btn-default" href="#{{ product.id }}" role="button">View details &raquo;</a></p>
@@ -78,7 +77,7 @@
   <script src="assets/javascript/app.js"></script>
 
   <!-- controllers -->
-  <script src="assets/javascript/controllers/ProductListController.js"></script>
+  <script src="assets/javascript/controllers/ProductController.js"></script>
 
   <!-- directives -->
 

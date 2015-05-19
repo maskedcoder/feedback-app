@@ -1,5 +1,5 @@
-app.controller('ProductListController', function() {
-  this.products = [
+app.controller('ProductController', function($scope) {
+  $scope.products = [
     {
       id: 1,
       company: 2,
