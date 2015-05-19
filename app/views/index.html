@@ -53,9 +53,7 @@
   <div class="container" ng-controller="ProductController">
     <div class="row">
       <div class="col-md-4" ng-repeat="product in products | limitTo:3">
-        <h2>{{ product.name }}</h2>
-        <p>{{ product.description }}</p>
-        <p><a class="btn btn-default" href="#{{ product.id }}" role="button">View details &raquo;</a></p>
+        <product-listing></product-listing>
       </div>
     </div>
 
@@ -80,6 +78,7 @@
   <script src="assets/javascript/controllers/ProductController.js"></script>
 
   <!-- directives -->
+  <script src="assets/javascript/directives/productListing.js"></script>
 
   <!-- views -->
 </body>
