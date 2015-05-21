@@ -35,28 +35,9 @@
     </div>
   </nav>
 
+  <div ng-view></div>
 
-  <div class="jumbotron">
-    <div class="container">
-      <h1>Simple Angular Example App</h1>
-      <p>This example Angular app was hacked together in a few short coding sessions over the course of a few days and is likely still not done.</p>
-      <p>In the final version of this app, the user should be able to:</p>
-      <ol>
-        <li>View a list of products/businesses</li>
-        <li>Comment on said products/businesses</li>
-        <li>Mark comments as helpful/unhelpful</li>
-      </ol>
-      <p>Enough talk. Let's see it go.</p>
-    </div>
-  </div>
-
-  <div class="container" ng-controller="ProductController">
-    <div class="row">
-      <div class="col-md-4" ng-repeat="product in products | limitTo:3">
-        <product-listing></product-listing>
-      </div>
-    </div>
-
+  <div class="container">
     <hr>
 
     <footer>
@@ -73,8 +54,10 @@
 
   <!-- app -->
   <script src="assets/javascript/app.js"></script>
+  <script src="assets/javascript/routes.js"></script>
 
   <!-- controllers -->
+  <script src="assets/javascript/controllers/HomeController.js"></script>
   <script src="assets/javascript/controllers/ProductController.js"></script>
 
   <!-- directives -->

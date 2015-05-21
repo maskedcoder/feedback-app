@@ -1,1 +1,1 @@
-var app = angular.module('Feedback', ['ngResource']);
+var app = angular.module('Feedback', ['ngRoute', 'ngResource']);
