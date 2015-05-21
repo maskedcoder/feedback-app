@@ -1,1 +1,1 @@
-var app = angular.module('Feedback', []);
+var app = angular.module('Feedback', ['ngResource']);
