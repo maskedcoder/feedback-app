@@ -10,5 +10,6 @@ app.get('/', function(req, res) {
 });
 
 // Load routes
+require('./models/products')(app, express);
 
 module.exports = app;
