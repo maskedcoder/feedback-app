@@ -4,7 +4,7 @@
   "description": "A simple Angular app",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "node_modules/.bin/protractor test/conf.js",
     "start": "node index.js"
   },
   "keywords": [
@@ -17,5 +17,8 @@
     "body-parser": "^1.12.4",
     "express": "^4.12.3",
     "joi": "^6.4.1"
+  },
+  "devDependencies": {
+    "protractor": "^2.1.0"
   }
 }
