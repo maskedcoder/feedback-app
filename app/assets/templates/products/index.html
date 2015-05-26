@@ -1,11 +1,13 @@
-<div class="page-header">
-  <h1>Products</h1>
+<div class="container">
+  <div class="page-header">
+    <h1>Products</h1>
+  </div>
 </div>
 
 <div class="container">
-  <div class="panel panel-default" ng-repeat="product in products">
-   <div class="panel-body">
+  <ul class="panel panel-default list-unstyled" ng-repeat="product in products">
+   <li class="panel-body">
     <product-listing></product-listing>
-   </div>
-  </div>
+   </li>
+  </ul>
 </div>
