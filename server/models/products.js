@@ -28,10 +28,10 @@ var productData = [
 ];
 
 // Schema for validating new products
-var productSchema = joi.object().keys({
-  name: joi.string().alphanum().min(3).max(30).required(),
+var productSchema = joi.object().unknown().keys({
+  name: joi.string().regex(/^(\w|\s)*$/).min(3).max(30).required(),
   description: joi.string().min(15).required()
-})
+});
 
 var lastId = productData.length;
 var getNextId = function() {
