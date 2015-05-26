@@ -11,5 +11,9 @@ app.config(function($routeProvider) {
     .when('/products/:id', {
       templateUrl: '/assets/templates/products/show.html',
       controller: 'ProductShowController'
+    })
+    .when('/products/:id/edit', {
+      templateUrl: '/assets/templates/products/edit.html',
+      controller: 'ProductEditController'
     });
 });
