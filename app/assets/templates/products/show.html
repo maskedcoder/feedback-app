@@ -7,7 +7,8 @@
     <p>{{ product.description }}</p>
 
     <footer class="pull-right">
-      <small><a href="#/products/{{ product.id }}/edit">Edit this page</a></small>
+      <small><a href="#/products/{{ product.id }}/edit" class="btn btn-default btn-sm">Edit product</a>
+      <button class="btn btn-danger btn-sm" ng-click="deleteProduct(product)">Delete product</button></small>
     </footer>
   </article>
 </div>
