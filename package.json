@@ -3,12 +3,19 @@
   "version": "1.0.0",
   "description": "A simple Angular app",
   "main": "index.js",
+  "repository": [
+    "type": "git",
+    "url": "git://github.com/maskedcoder/feedback-app.git"
+  ]
   "scripts": {
     "test": "node_modules/.bin/protractor test/conf.js",
     "start": "node index.js"
   },
   "keywords": [
-    "angular"
+    "angular",
+    "express",
+    "bootstrap",
+    "app"
   ],
   "private": true,
   "author": "Andrew Myers",
