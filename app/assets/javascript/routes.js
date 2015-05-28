@@ -8,6 +8,10 @@ app.config(function($routeProvider) {
       templateUrl: '/assets/templates/products/index.html',
       controller: 'ProductController'
     })
+    .when('/products/new', {
+      templateUrl: '/assets/templates/products/create.html',
+      controller: 'ProductCreateController'
+    })
     .when('/products/:id', {
       templateUrl: '/assets/templates/products/show.html',
       controller: 'ProductShowController'
