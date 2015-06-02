@@ -4,19 +4,19 @@ var express = require('express');
 var companyData = [
   {
     id: 1,
-    name: 'Foo Wax'
+    name: 'Example Industries'
   },
   {
     id: 2,
-    name: 'Bacon Product'
+    name: 'Bar Products LTD'
   },
   {
     id: 3,
-    name: 'Italian Prochetta'
+    name: 'Sausage Gmbh'
   },
   {
     id: 4,
-    name: 'Pork Chop'
+    name: 'Pork R Us'
   }
 ];
 

@@ -183,7 +183,7 @@ describe('Feedback app', function() {
 
     it('should render a single company', function() {
       var heading = element(by.binding('company.name'));
-      expect(heading.getText()).toEqual('Wax Wiser Incorporated');
+      expect(heading.getText()).toEqual('Example Industries');
 
       // Test for buttons
       expect($$('.qa-edit-button').count()).toBe(1);
