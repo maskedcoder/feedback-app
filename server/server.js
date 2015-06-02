@@ -2,9 +2,12 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var express = require('express');
 
+// Load non-database
+var dataStore = require('./models');
+
 // Load routes
-var products = require('./models/products');
-var companies = require('./models/companies');
+var products = require('./routes/products')(dataStore);
+var companies = require('./routes/companies')(dataStore);
 
 var app = express();
 
