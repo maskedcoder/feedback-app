@@ -1,6 +1,6 @@
 process.title = 'Feedback-App';
 
-var app = require('./server/routes');
+var app = require('./server/server');
 
 var server = app.listen(3000, function() {
   console.log('Listening on port %d', server.address().port);
