@@ -4,6 +4,7 @@ var express = require('express');
 
 // Load routes
 var products = require('./models/products');
+var companies = require('./models/companies');
 
 var app = express();
 
@@ -26,5 +27,6 @@ app.get('/', function(req, res) {
 
 // Mount routers
 app.use('/products', products);
+app.use('/companies', companies);
 
 module.exports = app;
