@@ -19,5 +19,21 @@ app.config(function($routeProvider) {
     .when('/products/:id/edit', {
       templateUrl: '/assets/templates/products/edit.html',
       controller: 'ProductEditController'
+    })
+    .when('/companies', {
+      templateUrl: '/assets/templates/companies/index.html',
+      controller: 'CompanyController'
+    })
+    .when('/companies/new', {
+      templateUrl: '/assets/templates/companies/create.html',
+      controller: 'CompanyCreateController'
+    })
+    .when('/companies/:id', {
+      templateUrl: '/assets/templates/companies/show.html',
+      controller: 'CompanyShowController'
+    })
+    .when('/companies/:id/edit', {
+      templateUrl: '/assets/templates/companies/edit.html',
+      controller: 'CompanyEditController'
     });
 });

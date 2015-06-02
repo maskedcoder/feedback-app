@@ -29,6 +29,7 @@
         <ul class="nav navbar-nav">
           <li ng-class="{active: isActive('/')}"><a href="#/">Home</a></li>
           <li ng-class="{active: isActive('/products')}"><a href="#/products">Products</a></li>
+          <li ng-class="{active: isActive('/companies')}"><a href="#/companies">Companies</a></li>
           <li ng-class="{active: isActive('contact')}"><a href="#contact">Contact</a></li>
         </ul>
       </div><!--/.nav-collapse -->
@@ -63,12 +64,17 @@
   <script src="assets/javascript/controllers/ProductShowController.js"></script>
   <script src="assets/javascript/controllers/ProductEditController.js"></script>
   <script src="assets/javascript/controllers/ProductCreateController.js"></script>
+  <script src="assets/javascript/controllers/CompanyController.js"></script>
+  <script src="assets/javascript/controllers/CompanyShowController.js"></script>
+  <script src="assets/javascript/controllers/CompanyEditController.js"></script>
+  <script src="assets/javascript/controllers/CompanyCreateController.js"></script>
 
   <!-- directives -->
   <script src="assets/javascript/directives/productListing.js"></script>
 
   <!-- services -->
   <script src="assets/javascript/services/product.js"></script>
+  <script src="assets/javascript/services/company.js"></script>
 
   <!-- filters -->
   <script src="assets/javascript/filters/summary.js"></script>

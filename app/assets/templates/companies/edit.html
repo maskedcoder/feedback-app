@@ -1,0 +1,21 @@
+<div class="container">
+  <article>
+    <header class="page-header">
+      <h1>Edit Company</h1>
+    </header>
+
+    <form>
+
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" class="form-control  qa-edit-name" name="name" value="{{ company.name }}" ng-model="company.name">
+      </div>
+
+      <input type="submit" class="btn btn-default  qa-submit-form" value="{{ isSubmitting ? 'Saving...' : 'Save Changes' }}" ng-disabled="isSubmitting" ng-click="saveCompany(company)">
+    </form>
+
+    <footer class="pull-right">
+      <small><a href="#/companies/{{ company.id }}/" class="qa-cancel-edit">Cancel editing</a></small>
+    </footer>
+  </article>
+</div>

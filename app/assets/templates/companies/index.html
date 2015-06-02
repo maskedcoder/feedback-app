@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="page-header">
+    <h1>Companies</h1>
+  </div>
+  <div class="well">
+    This is a listing of all companies. To create a new company, use this button: <a href="#/companies/new" class="btn btn-primary  qa-new-button">New Company</a>
+  </div>
+</div>
+
+<div class="container">
+  <ul class="panel panel-default list-unstyled" ng-repeat="company in companies">
+   <li class="panel-body">
+    <h2><a href="#/companies/{{ company.id }}">{{ company.name }}</a></h2>
+   </li>
+  </ul>
+</div>
