@@ -1,3 +1,6 @@
+// Store the id of any new product created, so we can use it
+var ID;
+
 describe('Main page', function() {
   beforeEach(function() {
     browser.get('http://localhost:3000');
@@ -56,7 +59,12 @@ describe('Products page', function() {
     submitBtn.click();
 
     // We should be on the show page now
-    expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#/products/5');
+    expect(browser.getCurrentUrl()).toMatch(/http:\/\/localhost:3000\/#\/products\/\d+/);
+
+    // Cache the id
+    browser.getCurrentUrl().then(function(url) {
+      ID = url.split('products/')[1];
+    });
 
     var heading = element(by.binding('product.name'));
     expect(heading.getText()).toContain('New Product');
@@ -69,16 +77,16 @@ describe('Products page', function() {
 
 describe('Product actions', function() {
   beforeEach(function() {
-    browser.get('http://localhost:3000/#/products/1');
+    browser.get('http://localhost:3000/#/products/' + ID);
   });
 
   it('should render a single product', function() {
     var heading = element(by.binding('product.name'));
-    expect(heading.getText()).toContain('Foo Wax');
+    expect(heading.getText()).toContain('New Product');
     expect(heading.getText()).toContain('Bar Products LTD');
 
     var description = element(by.binding('product.description'));
-    expect(description.getText()).toEqual('Lorem Foo Wax dolor sit amet, consectetur adipisicing elit. Perspiciatis ullam consequuntur velit quibusdam non laboriosam porro Foo eos provident ab eum, wax Foo, rem unde quos sapiente natus eaque voluptatibus!');
+    expect(description.getText()).toEqual('This is an extremely short and unhelpful description.');
 
     // Test for buttons
     expect($$('.qa-edit-button').count()).toBe(1);
@@ -91,14 +99,14 @@ describe('Product actions', function() {
     editBtn.click();
 
     // We should be on the edit page now
-    expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#/products/1/edit');
+    expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#/products/' + ID + '/edit');
 
     // Ctrl+A to select input contents and replace it
     $('.qa-edit-name').sendKeys(protractor.Key.CONTROL, 'a', protractor.Key.NULL,
                                'New Name');
 
     $('.qa-edit-description').sendKeys(protractor.Key.CONTROL, 'a', protractor.Key.NULL,
-                               'This is an extremely short and unhelpful description.');
+                               'This is an extremely unhelpful and short description.');
 
     // Select an option
     element(by.cssContainingText('option', 'Pork R Us')).click();
@@ -111,14 +119,13 @@ describe('Product actions', function() {
     submitBtn.click();
 
     // We should be on the show page now
-    expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#/products/1');
 
     var heading = element(by.binding('product.name'));
     expect(heading.getText()).toContain('New Name');
     expect(heading.getText()).toContain('Pork R Us');
 
     var description = element(by.binding('product.description'));
-    expect(description.getText()).toEqual('This is an extremely short and unhelpful description.');
+    expect(description.getText()).toEqual('This is an extremely unhelpful and short description.');
   });
 
   it('should allow deleting a product', function() {

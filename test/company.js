@@ -1,4 +1,8 @@
+// Store the id of any new company created, so we can use it later
+var ID;
+
 describe('Companies page', function() {
+
   beforeEach(function() {
     browser.get('http://localhost:3000/#/companies');
   });
@@ -35,7 +39,12 @@ describe('Companies page', function() {
     submitBtn.click();
 
     // We should be on the show page now
-    expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#/companies/5');
+    expect(browser.getCurrentUrl()).toMatch(/http:\/\/localhost:3000\/#\/companies\/\d+/);
+
+    // Cache the id
+    browser.getCurrentUrl().then(function(url) {
+      ID = url.split('companies/')[1];
+    });
 
     var name = element(by.binding('company.name'));
     expect(name.getText()).toEqual('New Company');
@@ -44,12 +53,12 @@ describe('Companies page', function() {
 
 describe('Company actions', function() {
   beforeEach(function() {
-    browser.get('http://localhost:3000/#/companies/1');
+    browser.get('http://localhost:3000/#/companies/' + ID);
   });
 
   it('should render a single company', function() {
     var heading = element(by.binding('company.name'));
-    expect(heading.getText()).toEqual('Example Industries');
+    expect(heading.getText()).toEqual('New Company');
 
     // Test for buttons
     expect($$('.qa-edit-button').count()).toBe(1);
@@ -62,7 +71,7 @@ describe('Company actions', function() {
     editBtn.click();
 
     // We should be on the edit page now
-    expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#/companies/1/edit');
+    expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#/companies/' + ID + '/edit');
 
     // Ctrl+A to select input contents and replace it
     $('.qa-edit-name').sendKeys(protractor.Key.CONTROL, 'a', protractor.Key.NULL,
@@ -76,7 +85,7 @@ describe('Company actions', function() {
     submitBtn.click();
 
     // We should be on the show page now
-    expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#/companies/1');
+    expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#/companies/' + ID);
 
     var heading = element(by.binding('company.name'));
     expect(heading.getText()).toEqual('New Name');
