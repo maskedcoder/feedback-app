@@ -4,11 +4,32 @@
       <h1>{{ company.name }}</h1>
     </header>
 
-    <ul class="panel panel-default list-unstyled" ng-repeat="product in company.products">
-     <li class="panel-body">
-      <product-listing></product-listing>
-     </li>
-    </ul>
+    <section>
+      <header>
+        <h2>Products</h2>
+      </header>
+      <ul class="panel panel-default list-unstyled" ng-repeat="product in company.products">
+        <li class="panel-body">
+          <product-listing></product-listing>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <header>
+        <h2>Reviews</h2>
+      </header>
+      <ul class="list-unstyled" ng-repeat="review in company.reviews">
+        <li class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><a href ng-href="#/companies/{{ company.id }}/reviews/{{ review.id }}">{{ review.title }}</a> <small>by {{ review.name }} </small> <ng-pluralize class="badge" count="review.stars" when="{'0': '0 stars', 'one': '1 star', 'other': '{} stars'}"></ng-pluralize></h3>
+          </div>
+          <div class="panel-body">
+            {{ review.description }}
+          </div>
+        </li>
+      </ul>
+    </section>
 
     <footer class="pull-right">
       <small><a href="#/companies/{{ company.id }}/edit" class="btn btn-default btn-sm  qa-edit-button">Edit company</a>
