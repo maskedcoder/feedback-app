@@ -4,6 +4,12 @@
       <h1>{{ company.name }}</h1>
     </header>
 
+    <ul class="panel panel-default list-unstyled" ng-repeat="product in company.products">
+     <li class="panel-body">
+      <product-listing></product-listing>
+     </li>
+    </ul>
+
     <footer class="pull-right">
       <small><a href="#/companies/{{ company.id }}/edit" class="btn btn-default btn-sm  qa-edit-button">Edit company</a>
       <button class="btn btn-danger btn-sm  qa-delete-button" ng-click="deleteCompany(company)">Delete company</button></small>

@@ -35,6 +35,15 @@ module.exports = function(dataStore) {
       for (; i < len; i++) {
         if (companyData[i].id === id) {
           req.company = companyData[i];
+          req.products = [];
+
+          // Get a list of products belonging to the company
+          productData.forEach(function(product) {
+            if (product.company === id) {
+              req.products.push(product);
+            }
+          });
+
           return next();
         }
       }
@@ -89,7 +98,13 @@ module.exports = function(dataStore) {
      * GET /companies/##
      */
     .get(function(req, res) {
-      res.json(req.company);
+      // Copy the object so attributes can be safely added
+      var company = JSON.parse(JSON.stringify(req.company));
+
+      // Add a list of products
+      company.products = req.products;
+
+      res.json(company);
     })
 
     /**
@@ -119,6 +134,7 @@ module.exports = function(dataStore) {
       });
 
       delete req.company;
+      delete req.products;
 
       newLength = companyData.length;
 
