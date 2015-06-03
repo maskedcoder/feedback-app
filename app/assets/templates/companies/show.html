@@ -19,6 +19,8 @@
       <header>
         <h2>Reviews</h2>
       </header>
+      <p class="alert alert-warning" ng-hide="company.reviews.length">It looks like nobody has reviewed this company yet. <a href ng-href="#/companies/{{ company.id }}/reviews/new" class="btn btn-primary">Be the first</a></p>
+      <p ng-show="company.reviews.length">Average of <ng-pluralize class="badge" count="stars()" when="{'0': '0 stars', 'one': '1 star', 'other': '{} stars'}"></ng-pluralize> based on <ng-pluralize count="company.reviews.length" when="{'0': '0 reviews', 'one': '1 review', 'other': '{} reviews'}"></ng-pluralize></p>
       <ul class="list-unstyled" ng-repeat="review in company.reviews">
         <li class="panel panel-default">
           <div class="panel-heading">
