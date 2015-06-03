@@ -9,11 +9,13 @@ var express = require('express');
  */
 module.exports = function(dataStore) {
   var productData = dataStore.productData;
+  var companyData = dataStore.companyData;
 
   // Schema for validating new products
   var productSchema = joi.object().unknown().keys({
     name: joi.string().regex(/^(\w|\s)*$/).min(3).max(30).required(),
-    description: joi.string().min(15).required()
+    description: joi.string().min(15).required(),
+    company: joi.number().integer()
   });
 
   var lastId = productData.length;
@@ -35,6 +37,17 @@ module.exports = function(dataStore) {
       for (; i < len; i++) {
         if (productData[i].id === id) {
           req.product = productData[i];
+
+          // Find the product's company
+          for (i = 0, len = companyData.length; i < len; i++) {
+            if (companyData[i].id === req.product.company) {
+              req.company = companyData[i];
+              return next();
+            }
+          }
+
+          // The company was not found
+          // Continue, but there might be an error
           return next();
         }
       }
@@ -64,6 +77,8 @@ module.exports = function(dataStore) {
       var productCandidate = req.body;
       var newProduct = {};
 
+      productCandidate.company = Number(productCandidate.company);
+
       joi.validate(productCandidate, productSchema, function(err, value) {
         if (err) {
           return res.status(400)
@@ -72,10 +87,11 @@ module.exports = function(dataStore) {
 
         newProduct = {
           id: getNextId(),
-          company: 5, // This will need to change when company model is implemented
+          company: productCandidate.company,
           name: productCandidate.name,
           description: productCandidate.description
         };
+
         productData.push(newProduct);
 
         res.status(201)
@@ -91,7 +107,13 @@ module.exports = function(dataStore) {
      * GET /products/##
      */
     .get(function(req, res) {
-      res.json(req.product);
+      // Copy the product so we can add data
+      var product = JSON.parse(JSON.stringify(req.product));
+
+      // Since we loaded the company, add it
+      product.company = req.company;
+
+      res.json(product);
     })
 
     /**
@@ -147,6 +169,7 @@ module.exports = function(dataStore) {
         }
 
         req.product.name = productCandidate.name;
+        req.product.company = productCandidate.company;
         req.product.description = productCandidate.description;
 
         res.json(req.product);

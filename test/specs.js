@@ -47,6 +47,9 @@ describe('Feedback app', function() {
       $('.qa-edit-description').sendKeys(protractor.Key.CONTROL, 'a', protractor.Key.NULL,
                                  'This is an extremely short and unhelpful description.');
 
+      // Select an option
+      element(by.cssContainingText('option', 'Bar Products LTD')).click();
+
       // Test for buttons
       expect($$('.qa-cancel-create').count()).toBe(1);
 
@@ -58,7 +61,8 @@ describe('Feedback app', function() {
       expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#/products/5');
 
       var heading = element(by.binding('product.name'));
-      expect(heading.getText()).toEqual('New Product');
+      expect(heading.getText()).toContain('New Product');
+      expect(heading.getText()).toContain('Bar Products LTD');
 
       var description = element(by.binding('product.description'));
       expect(description.getText()).toEqual('This is an extremely short and unhelpful description.');
@@ -72,7 +76,8 @@ describe('Feedback app', function() {
 
     it('should render a single product', function() {
       var heading = element(by.binding('product.name'));
-      expect(heading.getText()).toEqual('Foo Wax');
+      expect(heading.getText()).toContain('Foo Wax');
+      expect(heading.getText()).toContain('Bar Products LTD');
 
       var description = element(by.binding('product.description'));
       expect(description.getText()).toEqual('Lorem Foo Wax dolor sit amet, consectetur adipisicing elit. Perspiciatis ullam consequuntur velit quibusdam non laboriosam porro Foo eos provident ab eum, wax Foo, rem unde quos sapiente natus eaque voluptatibus!');
@@ -97,6 +102,9 @@ describe('Feedback app', function() {
       $('.qa-edit-description').sendKeys(protractor.Key.CONTROL, 'a', protractor.Key.NULL,
                                  'This is an extremely short and unhelpful description.');
 
+      // Select an option
+      element(by.cssContainingText('option', 'Pork R Us')).click();
+
       // Test for buttons
       expect($$('.qa-cancel-edit').count()).toBe(1);
 
@@ -108,7 +116,8 @@ describe('Feedback app', function() {
       expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#/products/1');
 
       var heading = element(by.binding('product.name'));
-      expect(heading.getText()).toEqual('New Name');
+      expect(heading.getText()).toContain('New Name');
+      expect(heading.getText()).toContain('Pork R Us');
 
       var description = element(by.binding('product.description'));
       expect(description.getText()).toEqual('This is an extremely short and unhelpful description.');
