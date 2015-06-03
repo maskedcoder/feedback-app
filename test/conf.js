@@ -5,7 +5,8 @@ exports.config = {
 
   // Spec files to run tests
   specs: [
-    'specs.js'
+    'product.js',
+    'company.js'
   ],
 
   // Use Jasmine framework for tests
