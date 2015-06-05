@@ -35,5 +35,17 @@ app.config(function($routeProvider) {
     .when('/companies/:id/edit', {
       templateUrl: '/assets/templates/companies/edit.html',
       controller: 'CompanyEditController'
+    })
+    .when('/companies/:companyId/reviews/new', {
+      templateUrl: '/assets/templates/companyReviews/create.html',
+      controller: 'CompanyReviewCreateController'
+    })
+    .when('/companies/:companyId/reviews/:id', {
+      templateUrl: '/assets/templates/companyReviews/show.html',
+      controller: 'CompanyReviewShowController'
+    })
+    .when('/companies/:companyId/reviews/:id/edit', {
+      templateUrl: '/assets/templates/companyReviews/edit.html',
+      controller: 'CompanyReviewEditController'
     });
 });

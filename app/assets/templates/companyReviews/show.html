@@ -1,0 +1,17 @@
+<div class="container">
+  <article>
+    <header class="page-header">
+      <h1>{{ review.title }} <small>by {{ review.name }}</small></h1>
+    </header>
+
+    <div class="well">This is a review of <a href ng-href="#/companies/{{ review.company.id }}">{{ review.company.name }}</a></div>
+
+    <p>{{ review.description }}</p>
+    <strong>{{ review.name }} rates this company <ng-pluralize count="review.stars" when="{'0': '0 stars', 'one': '1 star', 'other': '{} stars'}"></ng-pluralize></strong>
+
+    <footer class="pull-right">
+      <small><a href ng-href="#/companies/{{ review.company.id }}/reviews/{{ review.id }}/edit" class="btn btn-default btn-sm  qa-edit-button">Edit review</a>
+      <button class="btn btn-danger btn-sm  qa-delete-button" ng-click="deleteReview(review)">Delete review</button></small>
+    </footer>
+  </article>
+</div>

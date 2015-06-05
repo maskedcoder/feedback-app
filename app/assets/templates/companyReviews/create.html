@@ -1,0 +1,46 @@
+<div class="container">
+  <article>
+    <header class="page-header">
+      <h1>Review for {{ company.name }}</h1>
+    </header>
+
+    <form>
+
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" class="form-control  qa-edit-name" name="name" value="{{ review.name }}" ng-model="review.name">
+      </div>
+
+      <div class="form-group">
+        <label for="title">Review title:</label>
+        <input type="text" id="title" class="form-control  qa-edit-title" name="title" value="{{ review.title }}" ng-model="review.title">
+      </div>
+
+      <div class="form-group">
+        <label for="stars">Stars:</label>
+        <input type="number" min="1" max="5" id="stars" class="form-control  qa-edit-stars" name="stars" value="{{ review.stars }}" ng-model="review.stars">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Describe your experience:</label>
+        <textarea id="description" class="form-control  qa-edit-description" name="" value="{{ review.description }}" ng-model="review.description" cols="30" rows="10"></textarea>
+      </div>
+
+      <h3>Preview</h3>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{ review.title }} <small>by {{ review.name }} </small> <ng-pluralize class="badge" count="review.stars" when="{'0': '0 stars', 'one': '1 star', 'other': '{} stars'}"></ng-pluralize></h3>
+        </div>
+        <div class="panel-body">
+          {{ review.description }}
+        </div>
+      </div>
+
+      <input type="submit" class="btn btn-primary  qa-submit-form" value="{{ isSubmitting ? 'Creating...' : 'Create Review' }}" ng-disabled="isSubmitting" ng-click="createReview(review)">
+    </form>
+
+    <footer class="pull-right">
+      <small><a href ng-href="#/companies/{{ company.id }}" class="qa-cancel-create">Cancel</a></small>
+    </footer>
+  </article>
+</div>
